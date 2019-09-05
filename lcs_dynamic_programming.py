@@ -1,20 +1,21 @@
-str1 = 'AGGTAB'
-str2 = 'GXTXAYB'
+str1 = 'If last characters of both sequences match (or X[m-1] == Y[n-1]) then'
+str2 = 'If last characters of both sequences do not match (or X[m-1] != Y[n-1]) then'
 n = len(str1)
 m = len(str2)
-# output_matrix = numpy.zeros((n,m))
-
+tabulation_matrix = [[0 for a in range(m+1)] for a in range(n+1)]
+# print(tabulation_matrix)
 i = n-1
 j = m-1
 
-def lcs(str1,str2):
-    while True:
-        if len(str1) == 0 or len(str2) ==0:
-            return 0    
-        elif str1[-1] != str2[-1]:
-            return max(lcs(str1[:-1],str2),lcs(str1,str2[:-1])) 
-        elif str1[-1] == str2[-1]:
-            return lcs(str1[:-1],str2[:-1]) + 1
+for i in range(n+1):
+    for j in range(m+1):
+        if i == 0 or j ==0:
+            tabulation_matrix[i][j] == 0  
+        elif str1[i-1] == str2[j-1]:
+            tabulation_matrix[i][j] = tabulation_matrix[i-1][j-1] + 1
+        elif str1[i-1] != str2[j-1]:
+            tabulation_matrix[i][j] = max(tabulation_matrix[i][j-1],tabulation_matrix[i-1][j])
 
 
-print(lcs(str1,str2))
+for a in tabulation_matrix:
+    print(a)
