@@ -1,6 +1,7 @@
 import random
 
-unsorted_list = [random.randint(0, 100) for i in range(21)]
+N = 200000
+unsorted_list = [random.randint(0, N * 10) for i in range(N)]
 
 count = 0
 
@@ -38,7 +39,7 @@ def merge_sort(ar):
 
 
 if __name__ == "__main__":
-    print(unsorted_list)
+    # print(unsorted_list)
     l = merge_sort(unsorted_list)
 
-    print(l)
+    # print(l)
