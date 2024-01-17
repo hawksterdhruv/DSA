@@ -2,3 +2,6 @@
 
 /.vscode
 /venv
+leetcode_problems/twitter.py
+/__pycache__
+/.pytest_cache
